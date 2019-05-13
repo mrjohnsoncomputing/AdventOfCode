@@ -1,0 +1,4 @@
+Which day would you like to run?
+Beginning Day 6
+Coords Created
+Grid Created
