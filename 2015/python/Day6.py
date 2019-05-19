@@ -6,26 +6,13 @@ grid = grid * 1000
 lightson = 0
 for instruction in data:
     #print(instruction)
-    c1 = [int(i) for i in instruction[1].split(",")]
-    c2 = [int(i) for i in instruction[3].split(",")]
-    #print(c1,c2)
+    coord_1 = [int(i) for i in instruction[1].split(",")]
+    coord_2 = [int(i) for i in instruction[3].split(",")]
+
     action = instruction[0]
-    if c1[0] > c2[0]:
-        xmax = c1[0]
-        xmin = c2[0]
-    else:
-        xmax = c2[0]
-        xmin = c1[0]
         
-    if c1[1] > c2[1]:
-        ymax = c1[1]
-        ymin = c2[1]
-    else:
-        ymax = c2[1]
-        ymin = c1[1]
-        
-    for y in range(ymin,ymax+1):
-        for x in range(xmin, xmax+1):
+    for y in range(coord_1[1],coord_2[1]):
+        for x in range(coord_1[0],coord_2[0]):
             if action == "on":
                 if grid[y][x] == 0:
                     lightson += 1
