@@ -51,7 +51,7 @@ def difference(coords):
     return n1 + n2
 
 
-def main():
+def part1():
     puzzle_input = johnson.readfile("data.txt")
     print("Input Imported")
 
@@ -69,9 +69,8 @@ def main():
                 record = dist
                 print("i: {} -- Record: {}".format(i, record), end="\r", flush=True)
 
-
     print("Final Record: {}".format(record))
 
 
-main()
+part1()
 
