@@ -1,8 +1,4 @@
-def readfile(filename):
-    with open(filename, "r") as file:
-        data = file.read()
-    data = data.split("\n")
-    return data
+import helper
 
 def part1(target, data):
     found = False
@@ -47,7 +43,7 @@ print("Advent of Code: Day 1")
 # find the two entries that sum to 2020 and then multiply those two numbers together.
 
 test_data = [979, 675, 1456, 299, 1721, 366]
-puzzle_data = readfile("2020/day1data.txt")
+puzzle_data = helper.readfile("2020/day1data.txt")
 
 target = 2020
 #part1(target, puzzle_data)
