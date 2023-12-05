@@ -30,45 +30,33 @@ namespace PuzzleSolutions
                 .Select(scratchcard => scratchcard.PopulateMatchingNumberCount())
                 .ToList();
 
-            var total = 0;
-            foreach (var scratchcard in scratchcards!)
+            var copies = new Dictionary<int, int>();
+            for (var i = 0; i < scratchcards?.Count(); i++)
             {
-                total++;
-                scratchcard.Print();
-                total += GetScratchCards(scratchcards, scratchcard);
+                copies = AddCopiesToDictionary(copies, scratchcards[i], scratchcards);
             }
 
-            return $"{total}";
+            var result = copies.Sum(kvp => kvp.Value);
+
+            return $"{result}";
         }
 
-        public int GetScratchCards(List<Scratchcard> scratchcards, Scratchcard scratchcard, int level = 0)
+        private Dictionary<int, int> AddCopiesToDictionary(Dictionary<int,int> copies, Scratchcard scratchcard, List<Scratchcard> scratchcards)
         {
-            var total = 0;
-            PrintLevel(level, scratchcard.Id ,scratchcard.MatchingNumbers);
-            if (scratchcard.MatchingNumbers == 0) return 0;
+            if (copies.ContainsKey(scratchcard.Id))
+                copies[scratchcard.Id]++;
+            else
+                copies[scratchcard.Id] = 1;
 
-            for (var i = scratchcard.Id; i < scratchcard.Id + scratchcard.MatchingNumbers; i++)
+            if (scratchcard.MatchingNumbers == 0)
+                return copies;
+
+            for (var j = scratchcard.Id; j < scratchcard.Id + scratchcard.MatchingNumbers; j++)
             {
-                total++;
-                if (i >= scratchcards.Count()) break;
-
-                var additionalCard = scratchcards[i];
-
-                total += GetScratchCards(scratchcards, additionalCard, level+1);
+                copies = AddCopiesToDictionary(copies, scratchcards[j], scratchcards);
             }
-            return total;
-        }
 
-        public void PrintLevel(int level, int id, int matchingNumbers)
-        {
-            var indent = " ";
-            var message = string.Empty;
-            for (var i = 0; i<level; i++)
-            {
-                message += indent;
-            }
-            message += $"[{id}] Level {level}: {matchingNumbers} matches";
-            Console.WriteLine(message);
+            return copies;
         }
     }
 }
