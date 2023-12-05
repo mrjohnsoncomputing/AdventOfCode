@@ -11,8 +11,7 @@ namespace PuzzleSolutions.Database.Model
         public EnginePart() { }
 
         public EnginePart(string[] grid)
-        {
-            Console.WriteLine($"Length: {grid[1].Length} | {grid[1]}");
+        { 
             Number = int.Parse(grid[1].Substring(1, grid[1].Length - 2));
             IsValid = false;
 

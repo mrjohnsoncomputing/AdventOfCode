@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolutions.Database.DataImporters
 {
-    public class Day2DataImporter : DataImporterBase
+    internal class Day2DataImporter : DataImporterBase, IDataImporter
     {
         public Day2DataImporter() : base(2) { }
 
