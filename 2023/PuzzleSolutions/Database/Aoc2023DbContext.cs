@@ -14,6 +14,7 @@ namespace PuzzleSolutions.Database
         public DbSet<CubeGame>? Day2 { get; set; }
         public DbSet<EnginePart>? Day3 { get; set; }
         public DbSet<GearRatio> GearRatios { get; set; }
+        public DbSet<Scratchcard>? Day4 { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
@@ -26,6 +27,11 @@ namespace PuzzleSolutions.Database
             ConfigureId<CubeGame>(modelBuilder);
             ConfigureId<EnginePart>(modelBuilder);
             ConfigureId<GearRatio>(modelBuilder);
+            ConfigureId<Scratchcard>(modelBuilder);
+
+            modelBuilder.Entity<Scratchcard>()
+                .Ignore(scratchcard => scratchcard.WinningNumbers)
+                .Ignore(scratchcard => scratchcard.PlayingNumbers);
         }
 
         private void ConfigureId<T>(ModelBuilder modelBuilder) where T : GenericDbModel

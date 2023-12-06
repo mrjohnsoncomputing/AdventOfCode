@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolutions.Database.DataImporters
 {
-    public class DataImporterBase
+    internal class DataImporterBase
     {
         private int _day;
         private int _part;
@@ -20,7 +20,7 @@ namespace PuzzleSolutions.Database.DataImporters
         protected string[] GetPuzzleDataFromFile()
         {
             var dataFilePath = Path
-                .Combine(Environment.CurrentDirectory, $"Data-Work/Day{_day}-{_part}.txt");
+                .Combine(Environment.CurrentDirectory, $"Data/Day{_day}-{_part}.txt");
             var data = File.ReadAllLines( dataFilePath );
             return data;
         }

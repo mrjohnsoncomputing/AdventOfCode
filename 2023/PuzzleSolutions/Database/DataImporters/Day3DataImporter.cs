@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PuzzleSolutions.Database.DataImporters
 {
-    public class Day3DataImporter : DataImporterBase
+    internal class Day3DataImporter : DataImporterBase, IDataImporter
     {
         public Day3DataImporter() : base(3) { }
 
