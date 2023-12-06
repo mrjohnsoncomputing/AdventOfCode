@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PuzzleSolutions.Database.DataImporters
+namespace PuzzleSolutions.Database.DataImporters;
+
+public interface IDataImporter
 {
-    //TODO: internal -> public
-    public interface IDataImporter
-    {
-        public void Import();
-    }
+    public void Import();
 }

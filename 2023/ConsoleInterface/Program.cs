@@ -5,6 +5,6 @@ using PuzzleSolutions.Database.DataImporters;
 
 Console.WriteLine("Hello, World!");
 
-var day = 4;
-DataImportManager.ImportAll(day);
-PuzzleManager.SolveAll(day);
+var day = 5;
+//DataImportManager.ImportSingleDay(day);
+PuzzleManager.SolveSingleDay(day);

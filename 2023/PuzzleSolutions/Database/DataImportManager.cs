@@ -27,7 +27,7 @@ namespace PuzzleSolutions.Database
         private static void Import(int day)
         {
             var importer = Instantiator.InstantiateImporter(day);
-            Console.WriteLine("Importing...");
+            Console.WriteLine($"Importing Day {day}...");
             importer.Import();
             Console.WriteLine("...Finished Importing");
         }
